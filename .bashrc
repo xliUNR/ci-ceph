@@ -115,5 +115,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-LS_COLORS=$LS_COLORS:'di=0;36';export LS_COLORS
-PS1='[\033[1;36m]\u[\033[1;31m]@[\033[1;32m]\h:[\033[1;35m]\w[\033[1;31m]$[\033[0m]'
+LS_COLORS=$LS_COLORS:'di=0;36' ; export LS_COLORS
+PS1='[\033[1;36m]\u[\033[1;31m]@[\033[1;32m]\h:[\033[1;35m]\w[\033[1;31m]$[\033[0m] '
