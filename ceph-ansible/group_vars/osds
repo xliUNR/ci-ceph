@@ -1,0 +1,6 @@
+# to be filled
+journal_collocation: true
+osd_objectstore: bluestore
+devices:
+    - /dev/sda
+    - /dev/sdb

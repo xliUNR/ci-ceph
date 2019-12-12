@@ -1,0 +1,74 @@
+ceph_origin: 'upstream' 
+ceph_stable: true
+client_group_name: clients
+mon_group_name: mons
+osd_group_name: osds
+rgw_group_name: rgws
+mds_group_name: mdss
+nfs_group_name: nfss
+grafana_server_group_name: grafana-server
+mon_use_fqdn: false
+gateway_ip_list: 0.0.0.0
+gateway_iqn: ""
+client_connections: {}
+rbd_devices: {}
+dashboard_enabled: false
+journal_size: 5120 # OSD journal size in MB
+block_db_size: -1
+common_single_host_mode: true
+
+ceph_origin: repository
+ceph_repository: community
+ceph_repository_type: cdn
+ceph_stable_release: nautilus
+monitor_address: 0.0.0.0
+monitor_address_block: subnet
+monitor_interface: enp0s8
+public_network: 192.168.0.0/16
+cluster_network: 10.10.10.0/8
+cluster: ceph
+fsid: "{{ cluster_uuid.stdout }}"
+generate_fsid: true
+cephx: true
+fetch_directory: fetch/
+discovered_interpreter_python: python
+mds_use_fqdn: false
+ceph_conf_overrides: {}
+ceph_osd_pool_default_size: 3
+ceph_osd_pool_default_min_size: 0
+ceph_osd_pool_default_pg_num: 8
+ceph_osd_pool_default_crush_rule: -1
+ip_version: ipv4
+ntp_service_enabled: true
+ntp_daemon_type: chronyd
+##########
+# DOCKER #
+##########
+container_exec_cmd:
+docker: false
+#ceph_docker_image: "ceph/daemon"
+#ceph_docker_image_tag: latest
+#ceph_docker_registry: docker.io
+#ceph_docker_registry_auth: false
+#ceph_docker_registry_username:
+#ceph_docker_registry_password:
+## Client only docker image - defaults to {{ ceph_docker_image }}
+#ceph_client_docker_image: "{{ ceph_docker_image }}"
+#ceph_client_docker_image_tag: "{{ ceph_docker_image_tag }}"
+#ceph_client_docker_registry: "{{ ceph_docker_registry }}"
+#ceph_docker_enable_centos_extra_repo: false
+#ceph_docker_on_openstack: false
+containerized_deployment: False
+#container_binary:
+timeout_command: "{{ 'timeout --foreground -s KILL ' ~ docker_pull_timeout if (docker_pull_timeout != '0') and (ceph_docker_dev_image is undefined or not ceph_docker_dev_image) else '' }}"
+
+
+# this is only here for usage with the rolling_update.yml playbook
+# do not ever change this here
+rolling_update: false
+
+#####################
+# Docker pull retry #
+#####################
+docker_pull_retry: 3
+docker_pull_timeout: "300s"
