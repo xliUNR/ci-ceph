@@ -1,0 +1,16 @@
+[osds]
+storage ansible_host=192.168.50.4
+
+[mons]
+storage ansible_host=192.168.50.4
+
+#[mgrs]
+#storage ansible_host=192.168.50.4
+
+[clients]
+storage ansible_host=192.168.50.4
+
+[all:children]
+mons
+osds
+mgrs
